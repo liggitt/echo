@@ -14,7 +14,11 @@ func main() {
 		fmt.Fprintf(buffer, "req.Host: %q\n", req.Host)
 		fmt.Fprintf(buffer, "req.URL: %q\n", req.URL.String())
 		fmt.Fprintf(buffer, "req.Header: %#v\n", req.Header)
-		if req.TLS != nil {
+
+		if req.TLS == nil {
+			fmt.Fprintf(buffer, "req.TLS: <nil>\n")
+		} else {
+			fmt.Fprintf(buffer, "req.TLS: present\n")
 			for i, cert := range req.TLS.PeerCertificates {
 				fmt.Fprintf(buffer, "req.TLS.PeerCertificates[%d]: %#v\n", i, cert.Subject)
 			}
