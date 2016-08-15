@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"crypto/tls"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 )
 
@@ -17,6 +18,11 @@ func main() {
 			for i, cert := range req.TLS.PeerCertificates {
 				fmt.Fprintf(buffer, "req.TLS.PeerCertificates[%d]: %#v\n", i, cert.Subject)
 			}
+		}
+
+		content, _ := ioutil.ReadAll(req.Body)
+		if len(content) > 0 {
+			fmt.Fprintf(buffer, "req.Body: %s\n", string(content))
 		}
 
 		w.Write(buffer.Bytes())

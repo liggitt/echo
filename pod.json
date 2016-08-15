@@ -8,7 +8,7 @@
     "containers": [
       {
         "name": "echo",
-        "image": "liggitt/echo:0.1.0",
+        "image": "liggitt/echo:latest",
         "ports": [
           {
             "name":"http",
