@@ -1,0 +1,25 @@
+{
+  "kind": "Pod",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "echo"
+  },
+  "spec": {
+    "containers": [
+      {
+        "name": "echo",
+        "image": "liggitt/echo:0.1.0",
+        "ports": [
+          {
+            "name":"http",
+            "containerPort": 9080
+          },
+          {
+            "name":"https",
+            "containerPort": 9443
+          }
+        ]
+      }
+    ]
+  }
+}
